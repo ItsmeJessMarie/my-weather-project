@@ -1,3 +1,8 @@
+.container,
+#git-hub {
+  display: block;
+}
+
 .city,
 .temperature-now,
 #weather-description {
@@ -15,13 +20,13 @@
 .city,
 .current-time,
 .forecast,
-#current-parameters {
+#current-parameters,
+#git-hub {
   text-align: center;
 }
 .container {
   font-family: "Poppins", sans-serif;
   background-color: #e9ebee;
-  display: block;
   margin: 80px auto;
   padding: 40px;
   border-radius: 12px;
@@ -78,6 +83,9 @@
 .day {
   font-size: 20px;
   font-weight: bold;
+}
+#git-hub {
+  margin: -80px auto;
 }
 a:link {
   text-decoration: none;

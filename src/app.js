@@ -56,9 +56,9 @@ currentTimeDay.innerHTML = formatDate(currentTime);
 }
 let cityForm = document.querySelector("#search-form");
 cityForm.addEventListener("submit", cityValue);
-
+*/
 // Temp Conversion Challenge
-function tempChangeCelsius(event) {
+/*function tempChangeCelsius(event) {
   event.preventDefault();
   let tempNow = 17;
   let currentTemp = document.querySelector("#temperature-now");
@@ -84,8 +84,9 @@ function cityInput(event) {
   searchCity(city);
 }
 function searchCity(city) {
+  let units = "metric";
   let apiKey = "510eb6dd5bb8e3c932735e64258bc48d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showWeather);
 }
 let searchForm = document.querySelector("#search-form");

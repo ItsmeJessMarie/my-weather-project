@@ -1,4 +1,4 @@
-// Date and Time Challenge
+// Date and Time
 let currentTime = new Date();
 
 function formatDate(date) {
@@ -77,7 +77,7 @@ function tempChangeFahrenheit(event) {
 let fahrenheitTemp = document.querySelector("#fahrenheit-link");
 fahrenheitTemp.addEventListener("click", tempChangeFahrenheit);
 */
-// Weather Challenge
+// Search for a city input form for current weather conditions
 function cityInput(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
@@ -92,6 +92,7 @@ function searchCity(city) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", cityInput);
 
+// Placeholder city upon website launch and reload
 searchCity("Chicago");
 
 function showWeather(response) {
@@ -107,7 +108,7 @@ function showWeather(response) {
     response.data.weather[0].main;
 }
 
-// Bonus Feature
+// Search with GPS Latitude and Longitude (Allow location search)
 function searchLocation(position) {
   let apiKey = "510eb6dd5bb8e3c932735e64258bc48d";
   let lat = position.coords.latitude;
@@ -123,3 +124,141 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-input");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+// Top Cities Weather
+// Tokyo
+function searchTokyo(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showTokyoWeather);
+}
+
+function showTokyoWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+let tokyoCity = document.querySelector("#tokyo");
+tokyoCity.addEventListener("click", searchTokyo);
+
+// New York
+function searchNewYorkCity(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=new+york+city&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showNewYorkCityWeather);
+}
+
+function showNewYorkCityWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+let newYorkCity = document.querySelector("#new-york");
+newYorkCity.addEventListener("click", searchNewYorkCity);
+
+// London
+function searchLondonCity(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showLondonCityWeather);
+}
+
+function showLondonCityWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+let londonCity = document.querySelector("#london");
+londonCity.addEventListener("click", searchLondonCity);
+
+// Los Angeles
+function searchLosAngelesCity(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=los+angeles&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showLosAngelesCityWeather);
+}
+
+function showLosAngelesCityWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+let losAngelesCity = document.querySelector("#los-angeles");
+losAngelesCity.addEventListener("click", searchLosAngelesCity);
+
+// Paris
+function searchParisCity(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=paris&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showParisCityWeather);
+}
+
+function showParisCityWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+let parisCity = document.querySelector("#paris");
+parisCity.addEventListener("click", searchParisCity);
+
+// Chicago
+function searchChicagoCity(event) {
+  event.preventDefault();
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=chicago&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  axios.get(apiUrl).then(showChicagoCityWeather);
+}
+
+function showChicagoCityWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature-now").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].main;
+}
+
+let chicagoCity = document.querySelector("#chicago");
+chicagoCity.addEventListener("click", searchChicagoCity);

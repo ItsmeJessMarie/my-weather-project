@@ -12,13 +12,15 @@
 .current-time,
 .units,
 .forecast,
-.parameters {
+#parameters {
   font-weight: 500;
+}
+.city,
+.current-time {
+  padding-left: 35px;
 }
 .cities,
 .btn,
-.city,
-.current-time,
 .forecast,
 #current-parameters,
 #git-hub {
@@ -30,14 +32,16 @@
   margin: 80px auto;
   padding: 40px;
   border-radius: 12px;
+  width: 750px;
 }
 .cities {
   margin: 0 auto;
+  padding: 0 10px;
   color: blue;
-  font-size: 16px;
+  font-size: 15px;
 }
 .search-form {
-  padding: 30px 40px;
+  padding: 30px 40px 20px;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -45,37 +49,40 @@
   border-radius: 8px;
 }
 .city {
-  padding: 15px 0 0 0;
+  font-size: 46px;
+  padding-top: 20px;
 }
 .current-time {
   font-size: 18px;
   font-weight: 500;
   padding-top: 5px;
 }
+#current-parameters {
+  padding-top: 10px;
+}
 .emoji-now {
   font-size: 38px;
 }
 .temperature-now {
-  font-size: 38px;
+  font-size: 44px;
   padding-right: 35px;
 }
 .units {
-  font-size: 16px;
+  font-size: 14px;
   position: absolute;
-  margin: 8px 0 0 -30px;
+  margin: 10px 0 0 -30px;
 }
-.weather-description {
-  font-size: 24px;
+#weather-description {
+  font-size: 22px;
 }
-.parameters {
+#parameters {
   font-size: 12px;
-  padding-top: 2px;
 }
 .weather-app {
   padding: 0 30px;
 }
 .forecast {
-  padding: 20px 0 0 0;
+  padding: 20px 0 0;
 }
 .emoji {
   font-size: 34px;

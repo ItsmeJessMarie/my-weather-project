@@ -67,10 +67,16 @@
           <div class="row">
             <div class="col-7">
               <h1 class="city" id="city"></h1>
-              <div class="current-time" id="date"></div>
+              <span class="date-update">
+                Last updated: <span class="current-date" id="date"></span>
+              </span>
             </div>
             <div class="col-5" id="current-parameters">
-              <span class="emoji-now">☀️</span>
+              <span class="icon"><img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+                id="icon"
+                alt="few-clouds-day"
+              ></img></span>
               <span class="temperature-now" id="temperature-now"></span>
               <span class="units">
                 <a href="#" id="celsius-link">°C</a>
@@ -79,11 +85,12 @@
               </span>
               <h3 class="weather-description" id="weather-description"></h3>
               <span class="parameters" id="parameters">
-                H: <span id="humidity"></span>% W: <span id="wind"></span>mph
+                H: <span id="humidity"></span>% W: <span id="wind"></span> mph
               </span>
             </div>
           </div>
         </div>
+        <div class="days-forecast">Your five day forecast:</div>
         <div class="forecast">
           <div class="row">
             <div class="col">

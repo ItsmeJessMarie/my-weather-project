@@ -1,62 +1,3 @@
-// Date and Time
-let currentTime = new Date();
-
-function formatDate(date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let currentYear = date.getFullYear();
-  let currentDay = days[date.getDay()];
-  let currentMonth = months[date.getMonth()];
-  let currentDate = date.getDate();
-  let currentHour = date.getHours();
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
-  }
-  let currentMinutes = date.getMinutes();
-  if (currentMinutes < 10) {
-    currentMinutes = `0${currentMinutes}`;
-  }
-  //let currentSeconds = date.getSeconds();
-  let formattedDate = `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear} ${currentHour}:${currentMinutes}`;
-  return formattedDate;
-}
-
-let currentTimeDay = document.querySelector("#date");
-currentTimeDay.innerHTML = formatDate(currentTime);
-
-// City Search Challenge
-/*function cityValue(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input");
-  let heading = document.querySelector("h1");
-  heading.innerHTML = city.value;
-}
-let cityForm = document.querySelector("#search-form");
-cityForm.addEventListener("submit", cityValue);
-*/
 // Temp Conversion Challenge
 /*function tempChangeCelsius(event) {
   event.preventDefault();
@@ -77,6 +18,46 @@ function tempChangeFahrenheit(event) {
 let fahrenheitTemp = document.querySelector("#fahrenheit-link");
 fahrenheitTemp.addEventListener("click", tempChangeFahrenheit);
 */
+
+// Timestamp Date
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let month = months[date.getMonth()];
+  let day = days[date.getDay()];
+  let dates = date.getDate();
+  return `${day}, ${month} ${dates}, ${hours}:${minutes}`;
+}
 // Search for a city input form for current weather conditions
 function cityInput(event) {
   event.preventDefault();
@@ -85,35 +66,47 @@ function cityInput(event) {
 }
 function searchCity(city) {
   let units = "metric";
-  let apiKey = "510eb6dd5bb8e3c932735e64258bc48d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+  let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", cityInput);
 
 // Placeholder city upon website launch and reload
-searchCity("Chicago");
+searchCity("Milwaukee");
 
 function showWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  console.log(response);
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
 }
 
 // Search with GPS Latitude and Longitude (Allow location search)
 function searchLocation(position) {
-  let apiKey = "510eb6dd5bb8e3c932735e64258bc48d";
+  let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
+  let units = "metric";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -129,21 +122,31 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 // Tokyo
 function searchTokyo(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=tokyo&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showTokyoWeather);
 }
 
 function showTokyoWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
 }
 let tokyoCity = document.querySelector("#tokyo");
 tokyoCity.addEventListener("click", searchTokyo);
@@ -151,21 +154,28 @@ tokyoCity.addEventListener("click", searchTokyo);
 // New York
 function searchNewYorkCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=new+york+city&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=new+york+city&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showNewYorkCityWeather);
 }
 
 function showNewYorkCityWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 let newYorkCity = document.querySelector("#new-york");
@@ -174,21 +184,28 @@ newYorkCity.addEventListener("click", searchNewYorkCity);
 // London
 function searchLondonCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=london&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showLondonCityWeather);
 }
 
 function showLondonCityWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 let londonCity = document.querySelector("#london");
@@ -197,21 +214,28 @@ londonCity.addEventListener("click", searchLondonCity);
 // Los Angeles
 function searchLosAngelesCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=los+angeles&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=los+angeles&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showLosAngelesCityWeather);
 }
 
 function showLosAngelesCityWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 let losAngelesCity = document.querySelector("#los-angeles");
@@ -220,21 +244,28 @@ losAngelesCity.addEventListener("click", searchLosAngelesCity);
 // Paris
 function searchParisCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=paris&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=paris&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showParisCityWeather);
 }
 
 function showParisCityWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 let parisCity = document.querySelector("#paris");
@@ -243,21 +274,28 @@ parisCity.addEventListener("click", searchParisCity);
 // Chicago
 function searchChicagoCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=chicago&units=metric&appid=510eb6dd5bb8e3c932735e64258bc48d`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=chicago&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
   axios.get(apiUrl).then(showChicagoCityWeather);
 }
 
 function showChicagoCityWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 let chicagoCity = document.querySelector("#chicago");

@@ -2,22 +2,31 @@
 #git-hub {
   display: block;
 }
-
 .city,
 .temperature-now,
 #weather-description {
   font-weight: 700;
-  margin: 0 auto;
 }
-.current-time,
+.date-update,
+#date,
 .units,
+.days-forecast,
 .forecast,
 #parameters {
   font-weight: 500;
 }
+.date-update,
+#date,
+.days-forecast {
+  font-size: 14px;
+}
 .city,
-.current-time {
-  padding-left: 35px;
+.date-update {
+  margin: 20px 0 0 20px;
+}
+#icon,
+.temperature-now {
+  vertical-align: middle;
 }
 .cities,
 .btn,
@@ -42,7 +51,7 @@
 }
 .search-form {
   padding: 30px 40px 20px;
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto;
 }
 .enter-city {
@@ -50,36 +59,39 @@
 }
 .city {
   font-size: 46px;
-  padding-top: 20px;
 }
-.current-time {
-  font-size: 18px;
+.date-update {
+  padding-left: 2px;
+}
+#date {
   font-weight: 500;
-  padding-top: 5px;
 }
 #current-parameters {
-  padding-top: 10px;
-}
-.emoji-now {
-  font-size: 38px;
+  margin-top: -10px;
 }
 .temperature-now {
-  font-size: 44px;
-  padding-right: 35px;
+  font-size: 52px;
+  margin-right: 30px;
 }
 .units {
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
-  margin: 10px 0 0 -30px;
+  margin: 20px 0 0 -30px;
 }
 #weather-description {
   font-size: 22px;
+  text-transform: capitalize;
+  margin: -10px 0 -2px;
 }
 #parameters {
   font-size: 12px;
 }
 .weather-app {
   padding: 0 30px;
+}
+.days-forecast {
+  text-align: left;
+  margin: 10px 0 -18px 22px;
 }
 .forecast {
   padding: 20px 0 0;

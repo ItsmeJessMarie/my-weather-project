@@ -102,8 +102,8 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let currentFahrenheitTemperature = document.querySelector("#temperature-now");
-  celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   currentFahrenheitTemperature.innerHTML = Math.round(fahrenheitTemperature);
 }
@@ -136,10 +136,10 @@ function searchTokyo(event) {
 }
 
 function showTokyoWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -168,10 +168,10 @@ function searchNewYorkCity(event) {
 }
 
 function showNewYorkCityWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -198,10 +198,10 @@ function searchLondonCity(event) {
 }
 
 function showLondonCityWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -228,10 +228,10 @@ function searchLosAngelesCity(event) {
 }
 
 function showLosAngelesCityWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -258,10 +258,10 @@ function searchParisCity(event) {
 }
 
 function showParisCityWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -288,10 +288,10 @@ function searchChicagoCity(event) {
 }
 
 function showChicagoCityWeather(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(

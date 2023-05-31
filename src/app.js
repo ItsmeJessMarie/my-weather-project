@@ -1,24 +1,3 @@
-// Temp Conversion Challenge
-/*function tempChangeCelsius(event) {
-  event.preventDefault();
-  let tempNow = 17;
-  let currentTemp = document.querySelector("#temperature-now");
-  currentTemp.innerHTML = tempNow;
-}
-let celsiusTemp = document.querySelector("#celsius-link");
-celsiusTemp.addEventListener("click", tempChangeCelsius);
-
-function tempChangeFahrenheit(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temperature-now");
-  let tempNow = 17;
-  let fahrenheitTemperature = Math.round((tempNow * 9) / 5 + 32);
-  currentTemp.innerHTML = fahrenheitTemperature;
-}
-let fahrenheitTemp = document.querySelector("#fahrenheit-link");
-fahrenheitTemp.addEventListener("click", tempChangeFahrenheit);
-*/
-
 // Timestamp Date
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -58,30 +37,31 @@ function formatDate(timestamp) {
   let dates = date.getDate();
   return `${day}, ${month} ${dates}, ${hours}:${minutes}`;
 }
+
 // Search for a city input form for current weather conditions
 function cityInput(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
+
 function searchCity(city) {
   let units = "metric";
   let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
 }
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", cityInput);
 
-// Placeholder city upon website launch and reload
-searchCity("Milwaukee");
-
+// Weather Function Response
 function showWeather(response) {
   console.log(response);
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#temperature-now").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#temperature-now").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -118,6 +98,35 @@ function getCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#current-input");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
+// Fahrenheit Temperature Change
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let currentFahrenheitTemperature = document.querySelector("#temperature-now");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentFahrenheitTemperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusTemperature = null;
+
+// Celsius Temperature Change
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let currentCelsiusTemperature = document.querySelector("#temperature-now");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  currentCelsiusTemperature.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+// Placeholder city upon website launch and reload
+searchCity("Milwaukee");
+
 // Top Cities Weather
 // Tokyo
 function searchTokyo(event) {
@@ -150,7 +159,7 @@ function showTokyoWeather(response) {
 }
 let tokyoCity = document.querySelector("#tokyo");
 tokyoCity.addEventListener("click", searchTokyo);
-
+//
 // New York
 function searchNewYorkCity(event) {
   event.preventDefault();
@@ -180,7 +189,7 @@ function showNewYorkCityWeather(response) {
 
 let newYorkCity = document.querySelector("#new-york");
 newYorkCity.addEventListener("click", searchNewYorkCity);
-
+//
 // London
 function searchLondonCity(event) {
   event.preventDefault();
@@ -210,7 +219,7 @@ function showLondonCityWeather(response) {
 
 let londonCity = document.querySelector("#london");
 londonCity.addEventListener("click", searchLondonCity);
-
+//
 // Los Angeles
 function searchLosAngelesCity(event) {
   event.preventDefault();
@@ -240,7 +249,7 @@ function showLosAngelesCityWeather(response) {
 
 let losAngelesCity = document.querySelector("#los-angeles");
 losAngelesCity.addEventListener("click", searchLosAngelesCity);
-
+//
 // Paris
 function searchParisCity(event) {
   event.preventDefault();
@@ -270,7 +279,7 @@ function showParisCityWeather(response) {
 
 let parisCity = document.querySelector("#paris");
 parisCity.addEventListener("click", searchParisCity);
-
+//
 // Chicago
 function searchChicagoCity(event) {
   event.preventDefault();
@@ -300,3 +309,4 @@ function showChicagoCityWeather(response) {
 
 let chicagoCity = document.querySelector("#chicago");
 chicagoCity.addEventListener("click", searchChicagoCity);
+//

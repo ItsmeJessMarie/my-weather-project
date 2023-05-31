@@ -22,7 +22,7 @@
 }
 .city,
 .date-update {
-  margin: 20px 0 0 20px;
+  margin: 20px 0 0 18px;
 }
 #icon,
 .temperature-now {
@@ -57,6 +57,12 @@
 .enter-city {
   border-radius: 8px;
 }
+.btn-success:focus {
+  border-color: #157347;
+}
+.btn:hover {
+  text-decoration: none;
+}
 .city {
   font-size: 46px;
 }
@@ -69,14 +75,18 @@
 #current-parameters {
   margin-top: -10px;
 }
+#current-parameters .active {
+  color: #212529;
+  cursor: default;
+}
 .temperature-now {
   font-size: 52px;
   margin-right: 30px;
 }
 .units {
-  font-size: 12px;
+  font-size: 14px;
   position: absolute;
-  margin: 20px 0 0 -30px;
+  margin: 22px 0 0 -32px;
 }
 #weather-description {
   font-size: 22px;
@@ -91,7 +101,7 @@
 }
 .days-forecast {
   text-align: left;
-  margin: 10px 0 -18px 22px;
+  margin: 10px 0 -18px 20px;
 }
 .forecast {
   padding: 20px 0 0;

@@ -18,14 +18,18 @@
 .date-update,
 #date,
 .days-forecast {
-  font-size: 14px;
+  font-size: 15px;
 }
 .city,
 .date-update {
-  margin: 20px 0 0 18px;
+  margin: 15px 0 0 18px;
 }
+.city,
+.date-update,
 #icon,
-.temperature-now {
+.temperature-now,
+#weather-description,
+#parameters {
   vertical-align: middle;
 }
 .cities,
@@ -36,7 +40,7 @@
   text-align: center;
 }
 .container {
-  font-family: "Poppins", sans-serif;
+  font-family: "Rubik", sans-serif;
   background-color: #e9ebee;
   margin: 80px auto;
   padding: 40px;
@@ -64,7 +68,7 @@
   text-decoration: none;
 }
 .city {
-  font-size: 46px;
+  font-size: 48px;
 }
 .date-update {
   padding-left: 2px;
@@ -79,19 +83,23 @@
   color: #212529;
   cursor: default;
 }
+#icon {
+  width: 90px;
+  height: 90px;
+}
 .temperature-now {
-  font-size: 52px;
-  margin-right: 30px;
+  font-size: 48px;
+  margin: 0 25px 0 -8px;
 }
 .units {
   font-size: 14px;
-  position: absolute;
-  margin: 22px 0 0 -28px;
+  float: right;
+  margin: 18px 15px 0 -50px;
 }
 #weather-description {
   font-size: 22px;
   text-transform: capitalize;
-  margin: -10px 0 -2px;
+  margin: -10px 0 -5px;
 }
 #parameters {
   font-size: 12px;

@@ -78,6 +78,7 @@ function showWeather(response) {
   document.querySelector("#date").innerHTML = formatDate(
     response.data.time * 1000
   );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 // Search with GPS Latitude and Longitude (Allow location search)
@@ -156,6 +157,7 @@ function showTokyoWeather(response) {
   document.querySelector("#date").innerHTML = formatDate(
     response.data.time * 1000
   );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 let tokyoCity = document.querySelector("#tokyo");
 tokyoCity.addEventListener("click", searchTokyo);
@@ -185,6 +187,10 @@ function showNewYorkCityWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 let newYorkCity = document.querySelector("#new-york");
@@ -215,6 +221,10 @@ function showLondonCityWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 let londonCity = document.querySelector("#london");
@@ -245,6 +255,10 @@ function showLosAngelesCityWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 let losAngelesCity = document.querySelector("#los-angeles");
@@ -275,6 +289,10 @@ function showParisCityWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 let parisCity = document.querySelector("#paris");
@@ -305,6 +323,10 @@ function showChicagoCityWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.time * 1000
+  );
+  displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
 let chicagoCity = document.querySelector("#chicago");

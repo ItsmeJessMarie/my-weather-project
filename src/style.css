@@ -12,7 +12,7 @@
 .units,
 .days-forecast,
 .forecast,
-#parameters {
+#wind-humidity-parameters {
   font-weight: 500;
 }
 .date-update,
@@ -24,12 +24,8 @@
 .date-update {
   margin: 15px 0 0 18px;
 }
-.city,
-.date-update,
-#icon,
-.temperature-now,
-#weather-description,
-#parameters {
+.current,
+#temperature-now {
   vertical-align: middle;
 }
 .cities,
@@ -101,7 +97,7 @@
   text-transform: capitalize;
   margin: -10px 0 -5px;
 }
-#parameters {
+#wind-humidity-parameters {
   font-size: 12px;
 }
 .weather-app {

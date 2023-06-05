@@ -15,10 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="src/style.css" rel="stylesheet" type="text/css" />
-    <title>🌥️ Weather4U</title>
+    <title>🌥️ Weather 4 U</title>
   </head>
   <body>
-    <div class="container">
+    <div class="weather-app">
       <div class="cities">
         <div class="row">
           <div class="col"><a href="#" id="tokyo">Tokyo</a></div>
@@ -59,7 +59,6 @@
           </div>
         </div>
       </form>
-      <div class="weather-app">
         <div class="current-weather" id="current-weather">
           <div class="row">
             <div class="col-7">
@@ -85,43 +84,9 @@
             </div>
           </div>
         </div>
-        <div class="days-forecast">Your five day forecast:</div>
-        <div class="forecast">
-          <div class="row">
-            <div class="col">
-              <span class="emoji" id="forecast-icon">☀️</span>
-              <div class="low-hi">31°/63°</div>
-              <div class="day">Today</div>
-              <div class="date">04/27</div>
-            </div>
-            <div class="col">
-              <span class="emoji" id="forecast-icon">☁️</span>
-              <div class="low-hi">37°/61°</div>
-              <div class="day">Fri</div>
-              <div class="date">04/28</div>
-            </div>
-            <div class="col">
-              <span class="emoji" id="forecast-icon">🌧️</span>
-              <div class="low-hi">39°/50°</div>
-              <div class="day">Sat</div>
-              <div class="date">04/29</div>
-            </div>
-            <div class="col">
-              <span class="emoji" id="forecast-icon">🌧️</span>
-              <div class="low-hi">34°/42°</div>
-              <div class="day">Sun</div>
-              <div class="date">04/30</div>
-            </div>
-            <div class="col">
-              <span class="emoji" id="forecast-icon">🌧️</span>
-              <div class="low-hi">34°/43°</div>
-              <div class="day">Mon</div>
-              <div class="date">05/01</div>
-            </div>
-          </div>
+        <span class="days-forecast" id="days-forecast">Your five day forecast:</span>
+        <div class="full-forecast" id="full-forecast"></div>
         </div>
-      </div>
-    </div>
     <div class="git-hub" id="git-hub">
       <a
         href="https://github.com/ItsmeJessMarie/my-weather-project"

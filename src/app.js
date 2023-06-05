@@ -78,6 +78,7 @@ function showWeather(response) {
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.time * 1000
   );
+  displayForecast();
   displayCelsiusTemperature({ preventDefault: function () {} });
 }
 
@@ -127,6 +128,33 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 // Placeholder city upon website launch and reload
 searchCity("Milwaukee");
+
+// Forecast Weather
+function displayForecast() {
+  let forecastWeather = document.querySelector("#full-forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col">
+          <img 
+            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" width="60" alt="forecast-icon" id="forecast-icon"/>
+          <div class="weather-forecast-temperatures">
+            <span class="forecast-low">31°</span>/
+            <span class="forecast-hi">42°</span>
+          </div>
+          <div class="forecast-day">${day}</div>
+          <div class="forecast-date">04/27</div>
+        </div>
+        `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastWeather.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 
 // Top Cities Weather
 // Tokyo

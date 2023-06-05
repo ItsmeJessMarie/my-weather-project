@@ -1,26 +1,26 @@
-.container,
+.weather-app,
 #git-hub {
   display: block;
 }
-.city,
-.temperature-now,
+#city,
+#temperature-now,
 #weather-description {
   font-weight: 700;
 }
 .date-update,
 #current-date,
 .units,
-.days-forecast,
-.forecast,
+#days-forecast,
+#full-forecast,
 #wind-humidity-parameters {
   font-weight: 500;
 }
 .date-update,
 #current-date,
-.days-forecast {
+#days-forecast {
   font-size: 15px;
 }
-.city,
+#city,
 .date-update {
   margin: 15px 0 0 18px;
 }
@@ -30,12 +30,16 @@
 }
 .cities,
 .btn,
-.forecast,
+#full-forecast,
 #current-parameters,
 #git-hub {
   text-align: center;
 }
-.container {
+.cities,
+.search-form {
+  margin: 0 auto;
+}
+.weather-app {
   font-family: "Rubik", sans-serif;
   background-color: #e9ebee;
   margin: 80px auto;
@@ -44,15 +48,13 @@
   width: 750px;
 }
 .cities {
-  margin: 0 auto;
   padding: 0 10px;
   color: blue;
-  font-size: 15px;
+  font-size: 16px;
 }
 .search-form {
   padding: 30px 40px 20px;
   max-width: 95%;
-  margin: 0 auto;
 }
 .enter-city {
   border-radius: 8px;
@@ -63,13 +65,13 @@
 .btn:hover {
   text-decoration: none;
 }
-.city {
+#city {
   font-size: 48px;
 }
 .date-update {
   padding-left: 2px;
 }
-#date {
+#current-date {
   font-weight: 500;
 }
 #current-parameters {
@@ -83,7 +85,7 @@
   width: 90px;
   height: 90px;
 }
-.temperature-now {
+#temperature-now {
   font-size: 48px;
   margin: 0 25px 0 -8px;
 }
@@ -100,20 +102,21 @@
 #wind-humidity-parameters {
   font-size: 12px;
 }
-.weather-app {
+#current-weather {
   padding: 0 30px;
 }
-.days-forecast {
+#days-forecast {
   text-align: left;
   margin: 10px 0 -18px 20px;
+  padding-left: 30px;
 }
-.forecast {
-  padding: 20px 0 0;
+#full-forecast {
+  padding: 0 25px;
 }
 #forecast-icon {
   font-size: 34px;
 }
-.day {
+.forecast-day {
   font-size: 20px;
   font-weight: bold;
 }

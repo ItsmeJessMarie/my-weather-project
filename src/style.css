@@ -8,7 +8,7 @@
   font-weight: 700;
 }
 .date-update,
-#date,
+#current-date,
 .units,
 .days-forecast,
 .forecast,
@@ -16,7 +16,7 @@
   font-weight: 500;
 }
 .date-update,
-#date,
+#current-date,
 .days-forecast {
   font-size: 15px;
 }
@@ -24,7 +24,7 @@
 .date-update {
   margin: 15px 0 0 18px;
 }
-.current,
+#current-weather,
 #temperature-now {
   vertical-align: middle;
 }
@@ -79,7 +79,7 @@
   color: #212529;
   cursor: default;
 }
-#icon {
+#current-icon {
   width: 90px;
   height: 90px;
 }
@@ -110,7 +110,7 @@
 .forecast {
   padding: 20px 0 0;
 }
-.emoji {
+#forecast-icon {
   font-size: 34px;
 }
 .day {

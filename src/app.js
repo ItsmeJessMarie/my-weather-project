@@ -25,6 +25,8 @@ function formatDate(timestamp) {
     "December",
   ];
   let hours = date.getHours();
+  hours = hours % 12;
+  hours = hours ? hours : 12;
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -35,7 +37,8 @@ function formatDate(timestamp) {
   let month = months[date.getMonth()];
   let day = days[date.getDay()];
   let dates = date.getDate();
-  return `${day}, ${month} ${dates}, ${hours}:${minutes}`;
+  let amPm = hours >= 12 ? "AM" : "PM";
+  return `${day}, ${month} ${dates}, ${hours}:${minutes} ${amPm}`;
 }
 
 // Forecast Timestamp
@@ -54,9 +57,8 @@ function cityInput(event) {
 }
 
 function searchCity(city) {
-  let units = "metric";
   let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=${city}&key=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -87,16 +89,15 @@ function showWeather(response) {
     response.data.time * 1000
   );
   getForecast(response.data.coordinates);
-  displayCelsiusTemperature({ preventDefault: function () {} });
+  displayFahrenheitTemperature({ preventDefault: function () {} });
 }
 
 // Search with GPS Latitude and Longitude (Allow location search)
 function searchLocation(position) {
   let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
-  let units = "metric";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -123,14 +124,14 @@ function displayForecast(response) {
           <img 
             src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
               forecastDay.condition.icon
-            }.png" width="60" alt="forecast-icon" id="forecast-icon"/>
+            }.png" width="70" alt="forecast-icon" id="forecast-icon"/>
           <div class="weather-forecast-temperatures">
-            <span class="forecast-low">${Math.round(
-              forecastDay.temperature.minimum
-            )}</span>° /
             <span class="forecast-hi">${Math.round(
               forecastDay.temperature.maximum
-            )}°</span>
+            )}°</span> / 
+            <span class="forecast-low">${Math.round(
+              forecastDay.temperature.minimum
+            )}</span>°
           </div>
         </div>
         `;
@@ -143,35 +144,9 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "1bf547ta2a3986bceb80d3bcaob62269";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?&lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?&lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
-
-// Fahrenheit Temperature Change
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let currentFahrenheitTemperature = document.querySelector("#temperature-now");
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  currentFahrenheitTemperature.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusTemperature = null;
-
-// Celsius Temperature Change
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let currentCelsiusTemperature = document.querySelector("#temperature-now");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  currentCelsiusTemperature.innerHTML = Math.round(celsiusTemperature);
-}
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 // Placeholder city upon website launch and reload
 searchCity("Milwaukee");
@@ -180,7 +155,7 @@ searchCity("Milwaukee");
 // Tokyo
 function searchTokyo(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=tokyo&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=tokyo&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -190,7 +165,7 @@ tokyoCity.addEventListener("click", searchTokyo);
 // New York
 function searchNewYorkCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=new+york+city&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=new+york+city&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -200,7 +175,7 @@ newYorkCity.addEventListener("click", searchNewYorkCity);
 // London
 function searchLondonCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=london&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=london&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -210,7 +185,7 @@ londonCity.addEventListener("click", searchLondonCity);
 // Los Angeles
 function searchLosAngelesCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=los+angeles&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=los+angeles&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -220,7 +195,7 @@ losAngelesCity.addEventListener("click", searchLosAngelesCity);
 // Paris
 function searchParisCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=paris&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=paris&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -230,7 +205,7 @@ parisCity.addEventListener("click", searchParisCity);
 // Chicago
 function searchChicagoCity(event) {
   event.preventDefault();
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=chicago&key=1bf547ta2a3986bceb80d3bcaob62269&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?&query=chicago&key=1bf547ta2a3986bceb80d3bcaob62269&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 

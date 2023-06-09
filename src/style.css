@@ -9,7 +9,8 @@
 }
 .date-update,
 #current-date,
-.units,
+#degree,
+#fahrenheit,
 #days-forecast,
 #full-forecast,
 #wind-humidity-parameters {
@@ -17,12 +18,13 @@
 }
 .date-update,
 #current-date,
-#days-forecast {
+#days-forecast,
+#fahrenheit {
   font-size: 15px;
 }
 #city,
 .date-update {
-  margin: 15px 0 0 18px;
+  margin: 12px 0 0 18px;
 }
 #current-weather,
 #temperature-now {
@@ -39,6 +41,10 @@
 .search-form {
   margin: 0 auto;
 }
+#degree,
+#fahrenheit {
+  float: right;
+}
 .weather-app {
   font-family: "Rubik", sans-serif;
   background-color: #e9ebee;
@@ -54,7 +60,6 @@
 }
 .search-form {
   padding: 30px 40px 20px;
-  max-width: 95%;
 }
 .enter-city {
   border-radius: 8px;
@@ -75,27 +80,30 @@
   font-weight: 500;
 }
 #current-parameters {
-  margin-top: -10px;
+  margin-top: -8px;
 }
 #current-parameters .active {
   color: #212529;
   cursor: default;
 }
 #current-icon {
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
+  margin-left: 20px;
 }
 #temperature-now {
   font-size: 48px;
-  margin: 0 25px 0 -8px;
+  margin: 0 0 0 -4px;
 }
-.units {
-  font-size: 14px;
-  float: right;
-  margin: 18px 15px 0 -50px;
+#degree {
+  font-size: 22px;
+  margin: 15px 50px 0 -20px;
+}
+#fahrenheit {
+  margin: 18px 2px 0 0;
 }
 #weather-description {
-  font-size: 22px;
+  font-size: 24px;
   text-transform: capitalize;
   margin: -10px 0 -5px;
 }

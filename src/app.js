@@ -25,8 +25,8 @@ function formatDate(timestamp) {
     "December",
   ];
   let hours = date.getHours();
-  hours = hours % 12;
-  hours = hours ? hours : 12;
+  let amPm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -37,7 +37,6 @@ function formatDate(timestamp) {
   let month = months[date.getMonth()];
   let day = days[date.getDay()];
   let dates = date.getDate();
-  let amPm = hours >= 12 ? "AM" : "PM";
   return `${day}, ${month} ${dates}, ${hours}:${minutes} ${amPm}`;
 }
 

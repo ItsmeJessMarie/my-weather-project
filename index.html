@@ -11,14 +11,17 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link href="src/style.css" rel="stylesheet" type="text/css" />
     <title>🌥️ Weather 4 U</title>
   </head>
   <body>
-    <div class="weather-app">
+    <div class="weather-app mb-0">
       <div class="cities">
         <div class="row">
           <div class="col"><a href="#" id="tokyo">Tokyo</a></div>
@@ -59,33 +62,38 @@
           </div>
         </div>
       </form>
-        <div class="current-weather" id="current-weather">
-          <div class="row">
-            <div class="col-7">
-              <h1 class="city" id="city"></h1>
-              <span class="date-update">
-                Last updated: <span class="current-date" id="current-date"></span>
-              </span>
-            </div>
-            <div class="col-5" id="current-parameters">
-              <span class="current-icon"><img
+      <div class="current-weather" id="current-weather">
+        <div class="row">
+          <div class="col-7">
+            <h1 class="city" id="city"></h1>
+            <span class="date-update">
+              Last updated: <span class="current-date" id="current-date"></span>
+            </span>
+          </div>
+          <div class="col-5 mb-4" id="current-parameters">
+            <span class="current-icon"
+              ><img
                 src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
                 id="current-icon"
                 alt="few-clouds-day"
-              ></img></span>
-              <span class="temperature-now" id="temperature-now"></span>
-              <span class="degree" id="degree">°</span>
-              <span class="fahrenheit" id="fahrenheit">F</span>
-              <h3 class="weather-description" id="weather-description"></h3>
-              <span class="wind-humidity-parameters" id="wind-humidity-parameters">
-                Humidity: <span id="humidity"></span>% Wind: <span id="wind"></span> mph
-              </span>
-            </div>
+            /></span>
+            <span class="temperature-now" id="temperature-now"></span>
+            <span class="degree" id="degree">°</span>
+            <span class="fahrenheit" id="fahrenheit">F</span>
+            <h3 class="weather-description" id="weather-description"></h3>
+            <span
+              class="wind-humidity-parameters"
+              id="wind-humidity-parameters"
+            >
+              Humidity: <span id="humidity"></span>% Wind:
+              <span id="wind"></span> mph
+            </span>
           </div>
         </div>
-        <span class="days-forecast" id="days-forecast">Your five day forecast:</span>
-        <div class="full-forecast" id="full-forecast"></div>
-        </div>
+      </div>
+      <div class="five-day" id="five-day">Your five day forecast:</div>
+      <div class="full-forecast" id="full-forecast"></div>
+    </div>
     <div class="git-hub" id="git-hub">
       <a
         href="https://github.com/ItsmeJessMarie/my-weather-project"
